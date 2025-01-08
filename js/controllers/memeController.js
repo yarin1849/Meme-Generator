@@ -11,15 +11,17 @@ function onInit() {
 }
 
 function renderMeme() {
-    drawImg()
+    const meme = getMeme()
+    drawImg(meme.selectedImgId)
+    renderText()
 }
 
-function drawImg() {
+function drawImg(imgId) {
     const elImg = new Image()
-    elImg.src = 'meme-imgs/1.jpg'
+    elImg.src = `meme-imgs/${imgId}.jpg`
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
-        drawText('My text')
+        renderText()
     }
 }
 
@@ -28,13 +30,20 @@ function coverCanvasWithImg(elImg) {
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 }
 
-function drawText(text) {
-    gCtx.font = '30px Arial'
-    gCtx.fillStyle = 'white'
+function drawText(line, idx) {
+    gCtx.font = `${line.size}px Arial`
+    gCtx.fillStyle = line.color
     gCtx.textAlign = 'center'
 
     const x = gElCanvas.width / 2
-    const y = gElCanvas.height / 6
+    const y = 50 + idx
 
-    gCtx.fillText(text, x, y)
+    gCtx.fillText(line.txt, x, y)
+}
+
+function renderText() {
+    const meme = getMeme()
+    meme.lines.forEach((line, idx) => {
+        drawText(line, idx)
+    })
 }
