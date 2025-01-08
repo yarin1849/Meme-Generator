@@ -16,8 +16,24 @@ function getMeme() {
     return gMeme
 }
 
-function setLineTxt(text) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = text
+function setLineTxt(newText) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = newText
+}
+
+function setTextColor(newColor) {
+    gMeme.lines[gMeme.selectedLineIdx].color = newColor
+}
+
+function setFontSize(newSize) {
+    gMeme.lines[gMeme.selectedLineIdx].size = newSize
+}
+
+function increaseFontSize() {
+    gMeme.lines[gMeme.selectedLineIdx].size += 2
+}
+
+function decreaseFontSize() {
+    gMeme.lines[gMeme.selectedLineIdx].size -= 2
 }
 
 function setImg(imgId) {

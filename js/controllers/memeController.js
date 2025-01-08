@@ -13,7 +13,8 @@ function onInit() {
     if (imgId) setImg(imgId)
 
     renderMeme()
-    addInput()
+    addTextInput()
+    addColorInput()
 }
 
 function renderMeme() {
@@ -54,8 +55,11 @@ function renderText() {
     })
 }
 
-function addInput() {
+
+
+function addTextInput() {
     const elTxtInput = document.getElementById('memeTextInput')
+    console.log('elTxtInput', elTxtInput)
     elTxtInput.addEventListener('input', onTextInput)
 }
 
@@ -65,8 +69,30 @@ function onTextInput(ev) {
     renderMeme()
 }
 
+function addColorInput() {
+    const elColorInput = document.getElementById('textColor')
+    elColorInput.addEventListener('input', onTextColor)
+}
+
+function onTextColor(ev) {
+    const newColor = ev.target.value
+    setTextColor(newColor)
+    renderMeme()
+}
+
+function onIncreaseFontSize() {
+    increaseFontSize()
+    renderMeme()
+}
+
+function onDecreaseFontSize() {
+    decreaseFontSize()
+    renderMeme()
+}
+
+
 function onDownloadCanvas(elLink) {
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
-    elLink.download = 'my-perfect-mime'
+    elLink.download = 'Your-perfect-mime'
 }
