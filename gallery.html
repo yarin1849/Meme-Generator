@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+</head>
+
+<body onload="onGalleryInit()">
+    <h1>Meme Gallery</h1>
+    <nav>
+        <a href="index.html">Meme Generator</a>
+    </nav>
+
+    <h3>Select an image</h3>
+    <section class="imgs-container">
+        <img src="meme-imgs/1.jpg" onclick="onImgSelect(1)" />
+        <img src="meme-imgs/2.jpg" onclick="onImgSelect(2)" />
+    </section>
+
+    <script src="js/services/memeService.js"></script>
+    <script src="js/controllers/memeController.js"></script>
+    <script src="js/controllers/galleryController.js"></script>
+</body>
+
+</html>

@@ -11,11 +11,11 @@
 <body onload="onInit()">
     <header>
         <h1>Meme Generator</h1>
+        <nav>
+            <a href="gallery.html">Gallery</a>
+        </nav>
     </header>
     <main>
-        <!-- <section">
-        <h2>Gallery</h2>
-    </section> -->
         <section>
             <label for="memeTextInput">Enter Your Text:</label>
             <input type="text" id="memeTextInput" placeholder="Type your meme text here">
@@ -24,6 +24,7 @@
         </section>
     </main>
 
+    <script src="js/controllers/galleryController.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/memeController.js"></script>
 </body>

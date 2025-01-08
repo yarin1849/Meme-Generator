@@ -7,8 +7,12 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    renderMeme()
+    const urlParams = new URLSearchParams(window.location.search)
+    const imgId = urlParams.get('imgId')
 
+    if (imgId) setImg(imgId)
+
+    renderMeme()
     addInput()
 }
 
