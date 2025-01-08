@@ -64,3 +64,9 @@ function onTextInput(ev) {
     setLineTxt(newText)
     renderMeme()
 }
+
+function onDownloadCanvas(elLink) {
+    const dataUrl = gElCanvas.toDataURL()
+    elLink.href = dataUrl
+    elLink.download = 'my-perfect-mime'
+}

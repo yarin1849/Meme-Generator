@@ -15,7 +15,6 @@ function renderGallery() {
 }
 
 function onImgSelect(imgId) {
-    console.log('imgId', imgId)
     setImg(imgId)
     window.location.href = `index.html?imgId=${imgId}`
 }
