@@ -43,9 +43,21 @@ function drawText(line, idx) {
     gCtx.textAlign = 'center'
 
     const x = gElCanvas.width / 2
-    const y = 50 + idx
+    const y = 50 + idx * (line.size + 10)
 
     gCtx.fillText(line.txt, x, y)
+
+    if (idx === gMeme.selectedLineIdx) {
+        const textWidth = gCtx.measureText(line.txt).width
+        gCtx.strokeStyle = line.color
+        gCtx.lineWidth = 1.5
+        const borderX = x - textWidth / 2 - 5
+        const borderY = y - line.size
+        const borderWidth = textWidth + 8
+        const borderHeight = line.size + 5
+
+        gCtx.strokeRect(borderX, borderY, borderWidth, borderHeight)
+    }
 }
 
 function renderText() {
@@ -81,15 +93,24 @@ function onTextColor(ev) {
 }
 
 function onIncreaseFontSize() {
-    increaseFontSize()
+    setIncreaseFontSize()
     renderMeme()
 }
 
 function onDecreaseFontSize() {
-    decreaseFontSize()
+    setDecreaseFontSize()
     renderMeme()
 }
 
+function onAddLine() {
+    setAddLine()
+    renderMeme()
+}
+
+function onSwitchLine() {
+    setSwitchLine()
+    renderMeme()
+}
 
 function onDownloadCanvas(elLink) {
     const dataUrl = gElCanvas.toDataURL()

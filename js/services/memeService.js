@@ -8,32 +8,65 @@ var gMeme = {
             txt: 'I sometimes eat Falafel',
             size: 20,
             color: 'red'
+        },
+        {
+            txt: 'And making funny memes',
+            size: 30,
+            color: 'blue'
         }
+
     ]
 }
+
 
 function getMeme() {
     return gMeme
 }
 
+function getCurrentLine() {
+    if (gMeme.selectedLineIdx < 0 || gMeme.selectedLineIdx === gMeme.lines.length) {
+        gMeme.selectedLineIdx = 0
+    }
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+
 function setLineTxt(newText) {
-    gMeme.lines[gMeme.selectedLineIdx].txt = newText
+    const line = getCurrentLine()
+    line.txt = newText
 }
 
 function setTextColor(newColor) {
-    gMeme.lines[gMeme.selectedLineIdx].color = newColor
+    const line = getCurrentLine()
+    line.color = newColor
 }
 
 function setFontSize(newSize) {
-    gMeme.lines[gMeme.selectedLineIdx].size = newSize
+    const line = getCurrentLine()
+    line.size = newSize
 }
 
-function increaseFontSize() {
-    gMeme.lines[gMeme.selectedLineIdx].size += 2
+function setIncreaseFontSize() {
+    const line = getCurrentLine()
+    line.size += 2
 }
 
-function decreaseFontSize() {
-    gMeme.lines[gMeme.selectedLineIdx].size -= 2
+function setDecreaseFontSize() {
+    const line = getCurrentLine()
+    line.size -= 2
+}
+
+function setAddLine() {
+    gMeme.lines.push({
+        txt: 'Add text here',
+        size: 20,
+        color: 'white'
+    })
+}
+
+function setSwitchLine() {
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx === gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
 function setImg(imgId) {

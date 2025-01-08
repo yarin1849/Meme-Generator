@@ -19,11 +19,11 @@
         <section>
             <label for="textColor">Text Color:</label>
             <input type="color" id="textColor" name="textColor" value="#000000" />
-            <button type="button" onclick="onIncreaseFontSize()">+</button>
-            <button type="button" onclick="onDecreaseFontSize()">-</button>
-            <label for="memeTextInput">Enter Your Text:</label>
+            <button onclick="onAddLine()">Add</button>
+            <button onclick="onIncreaseFontSize()">+</button>
+            <button onclick="onDecreaseFontSize()">-</button>
+            <button onclick="onSwitchLine()">switch</button>
             <input type="text" id="memeTextInput" placeholder="Type your meme text here">
-            <h2>Editor</h2>
             <canvas class="canvas-container" width="400" height="400"></canvas>
         </section>
 
