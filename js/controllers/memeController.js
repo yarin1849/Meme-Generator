@@ -8,6 +8,8 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
 
     renderMeme()
+
+    addInput()
 }
 
 function renderMeme() {
@@ -46,4 +48,15 @@ function renderText() {
     meme.lines.forEach((line, idx) => {
         drawText(line, idx)
     })
+}
+
+function addInput() {
+    const elTxtInput = document.getElementById('memeTextInput')
+    elTxtInput.addEventListener('input', onTextInput)
+}
+
+function onTextInput(ev) {
+    const newText = ev.target.value
+    setLineTxt(newText)
+    renderMeme()
 }
