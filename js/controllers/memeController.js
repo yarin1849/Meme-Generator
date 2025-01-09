@@ -15,6 +15,8 @@ function onInit() {
     renderMeme()
     addTextInput()
     addColorInput()
+
+    gElCanvas.addEventListener('click', onCanvasClick)
 }
 
 function renderMeme() {
@@ -45,20 +47,53 @@ function drawText(line, idx) {
     const x = gElCanvas.width / 2
     const y = 50 + idx * (line.size + 10)
 
+    line.x = x - gCtx.measureText(line.txt).width / 2
+    line.y = y - line.size / 2
+
     gCtx.fillText(line.txt, x, y)
 
-    if (idx === gMeme.selectedLineIdx) {
-        const textWidth = gCtx.measureText(line.txt).width
-        gCtx.strokeStyle = line.color
-        gCtx.lineWidth = 1.5
-        const borderX = x - textWidth / 2 - 5
-        const borderY = y - line.size
-        const borderWidth = textWidth + 8
-        const borderHeight = line.size + 5
+    const textWidth = gCtx.measureText(line.txt).width
+    line.width = textWidth
+    line.height = line.size
 
-        gCtx.strokeRect(borderX, borderY, borderWidth, borderHeight)
+    if (idx === gMeme.selectedLineIdx) {
+        drawTextBorder(line)
     }
 }
+
+
+function drawTextBorder(line) {
+    const borderX = line.x
+    const borderY = line.y - 8
+    const borderWidth = line.width
+    const borderHeight = line.height
+
+    gCtx.strokeStyle = line.color
+    gCtx.lineWidth = 1.5
+    gCtx.strokeRect(borderX, borderY, borderWidth, borderHeight)
+}
+
+
+function onCanvasClick(ev) {
+    const { offsetX, offsetY } = ev
+
+    const clickedLine = gMeme.lines.find(line => {
+        return (
+            offsetX > line.x &&
+            offsetX < line.x + line.width + 100 &&
+            offsetY > line.y - 8 &&
+            offsetY < line.y + line.height
+        )
+    })
+
+    if (clickedLine) {
+        setSelectedLine(clickedLine)
+        addTextInput()
+        renderMeme()
+    }
+}
+
+
 
 function renderText() {
     const meme = getMeme()
@@ -67,11 +102,10 @@ function renderText() {
     })
 }
 
-
-
 function addTextInput() {
     const elTxtInput = document.getElementById('memeTextInput')
-    console.log('elTxtInput', elTxtInput)
+    const selectedLine = getCurrentLine()
+    elTxtInput.value = selectedLine.txt
     elTxtInput.addEventListener('input', onTextInput)
 }
 
@@ -109,6 +143,7 @@ function onAddLine() {
 
 function onSwitchLine() {
     setSwitchLine()
+    addTextInput()
     renderMeme()
 }
 

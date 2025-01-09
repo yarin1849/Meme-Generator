@@ -72,3 +72,9 @@ function setSwitchLine() {
 function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
+
+function setSelectedLine(line) {
+    const idx = gMeme.lines.indexOf(line)
+    gMeme.selectedLineIdx = idx
+
+}
