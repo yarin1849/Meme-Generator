@@ -147,6 +147,11 @@ function onSwitchLine() {
     renderMeme()
 }
 
+function onDeleteLine() {
+    setDeleteLine()
+    renderMeme()
+}
+
 function onDownloadCanvas(elLink) {
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl

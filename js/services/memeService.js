@@ -76,5 +76,10 @@ function setImg(imgId) {
 function setSelectedLine(line) {
     const idx = gMeme.lines.indexOf(line)
     gMeme.selectedLineIdx = idx
+}
 
+function setDeleteLine() {
+    const selectedLineIdx = gMeme.selectedLineIdx
+    if (gMeme.lines.length > 0) { gMeme.lines.splice(selectedLineIdx, 1) }
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) { gMeme.selectedLineIdx = 0 }
 }

@@ -8,23 +8,28 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body onload="onInit()">
-    <header>
+<body class="main-layout" onload="onInit()">
+    <header class="main-header">
+        <div class="logo">Meme Generator</div>
         <h1>Meme Generator</h1>
-        <nav>
-            <a href="gallery.html">Gallery</a>
+
+        <nav class="main-nav">
+            <ul class="flex">
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
         </nav>
     </header>
-    <main>
-        <section>
+    <main class="main-content">
+        <canvas class="canvas-container" width="400" height="400"></canvas>
+        <section class="edit-tools">
             <label for="textColor"></label>
-            <input type="color" id="textColor" name="textColor" value="#000000" />
+            <input type="color" id="textColor" name="textColor" value="#ffffff" />
             <button onclick="onAddLine()">Add</button>
             <button onclick="onIncreaseFontSize()">+</button>
             <button onclick="onDecreaseFontSize()">-</button>
-            <button onclick="onSwitchLine()">switch</button>
+            <button onclick="onSwitchLine()">Switch</button>
+            <button onclick="onDeleteLine()">Delete</button>
             <input type="text" id="memeTextInput" placeholder="Type your meme text here">
-            <canvas class="canvas-container" width="400" height="400"></canvas>
         </section>
 
         <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
