@@ -10,30 +10,62 @@
 
 <body class="main-layout" onload="onInit()">
     <header class="main-header">
-        <div class="logo">Meme Generator</div>
-        <h1>Meme Generator</h1>
+        <div class="flex align-center space-between">
+            <div class="logo">Meme Generator</div>
+            <h1>Meme Generator</h1>
 
-        <nav class="main-nav">
-            <ul class="flex">
-                <li><a href="gallery.html">Gallery</a></li>
-            </ul>
-        </nav>
+            <nav class="main-nav">
+                <ul class="flex">
+                    <li><a href="gallery.html">Gallery</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn-toggle-menu fa hamburger" onclick="toggleMenu()"></button>
+
+
+        </div>
     </header>
     <main class="main-content">
-        <canvas class="canvas-container" width="400" height="400"></canvas>
+
+        <canvas width="500" height="500"></canvas>
+
         <section class="edit-tools">
-            <label for="textColor"></label>
-            <input type="color" id="textColor" name="textColor" value="#ffffff" />
-            <button onclick="onAddLine()">Add</button>
-            <button onclick="onIncreaseFontSize()">+</button>
-            <button onclick="onDecreaseFontSize()">-</button>
-            <button onclick="onSwitchLine()">Switch</button>
-            <button onclick="onDeleteLine()">Delete</button>
             <input type="text" id="memeTextInput" placeholder="Type your meme text here">
+
+            <section class="buttons-container">
+                <section class="main-buttons">
+                    <button onclick="onMoveTextUp()">↑</button>
+                    <button onclick="onMoveTextDown()">↓</button>
+                    <button onclick="onSwitchLine()">Switch</button>
+                    <button onclick="onAddLine()">Add</button>
+                    <button onclick="onDeleteLine()">Delete</button>
+                </section>
+                <section class="font-buttons">
+                    <input type="color" id="textColor" name="textColor" value="#ffffff" />
+                    <select id="fontFamily">
+                        <option value="Arial">Arial</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Tahoma">Tahoma</option>
+                    </select>
+                    <select id="textAlign">
+                        <option value="left">Left</option>
+                        <option value="center" selected>Center</option>
+                        <option value="right">Right</option>
+                    </select>
+
+                    <button onclick="onIncreaseFontSize()">+</button>
+                    <button onclick="onDecreaseFontSize()">-</button>
+                </section>
+            </section>
+            <a class="connection-button" href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
         </section>
 
-        <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
     </main>
+    <footer class="main-footer">
+        <div class="logo small-logo flex align-center justify-center">Meme Generator</div>
+        <small class="rights flex align-center justify-center">© 2025 MemeGenerator.com</small>
+    </footer>
 
     <script src="js/controllers/galleryController.js"></script>
     <script src="js/services/memeService.js"></script>

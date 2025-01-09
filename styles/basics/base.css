@@ -2,35 +2,12 @@
     box-sizing: border-box;
 }
 
-body {
+body,
+html {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0px;
     padding: 0px;
-}
-
-section {
-    margin-bottom: 30;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-header h1 {
-    font-size: 2em;
-    color: #333;
-}
-
-nav a {
-    font-size: 1.2em;
-    color: #007bff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-nav a:hover {
-    text-decoration: underline;
+    background-color: var(--clr-primary-3);
 }
 
 .canvas-container {
@@ -38,4 +15,16 @@ nav a:hover {
     margin: 10px auto;
     border: 1px solid black;
     background-color: rgb(207, 207, 207);
+}
+
+.main-header .btn-toggle-menu {
+    display: none;
+}
+
+canvas {
+    border: 1px solid #000;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }

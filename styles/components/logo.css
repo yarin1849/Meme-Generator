@@ -1,0 +1,17 @@
+.logo {
+    font-family: Rampart-One;
+    color: var(--clr-primary-3);
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+}
+
+.small-logo {
+    font-size: 1em;
+}
+
+.logo:hover {
+    cursor: pointer;
+    color: var(--clr-primary-2);
+    transition: color 0.3s ease;
+}

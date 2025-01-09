@@ -5,16 +5,12 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Add text here',
             size: 20,
-            color: 'red'
-        },
-        {
-            txt: 'And making funny memes',
-            size: 30,
-            color: 'blue'
+            color: 'white',
+            fontFamily: 'Arial',
+            align: 'center'
         }
-
     ]
 }
 
@@ -24,9 +20,9 @@ function getMeme() {
 }
 
 function getCurrentLine() {
-    if (gMeme.selectedLineIdx < 0 || gMeme.selectedLineIdx === gMeme.lines.length) {
+    if (gMeme.selectedLineIdx < 0 || gMeme.selectedLineIdx === gMeme.lines.length)
         gMeme.selectedLineIdx = 0
-    }
+
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
@@ -60,7 +56,9 @@ function setAddLine() {
     gMeme.lines.push({
         txt: 'Add text here',
         size: 20,
-        color: 'white'
+        color: 'white',
+        fontFamily: 'Arial',
+        align: 'center'
     })
 }
 
@@ -82,4 +80,14 @@ function setDeleteLine() {
     const selectedLineIdx = gMeme.selectedLineIdx
     if (gMeme.lines.length > 0) { gMeme.lines.splice(selectedLineIdx, 1) }
     if (gMeme.selectedLineIdx >= gMeme.lines.length) { gMeme.selectedLineIdx = 0 }
+}
+
+function setFontFamily(newFontFamily) {
+    const line = getCurrentLine()
+    line.fontFamily = newFontFamily
+}
+
+function setTextAlign(newAlign) {
+    const line = getCurrentLine()
+    line.align = newAlign
 }

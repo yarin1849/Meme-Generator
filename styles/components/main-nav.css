@@ -1,1 +1,18 @@
-.main-nav {}
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.main-nav ul li {
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--clr-primary-3);
+    padding: 8px 12px;
+}

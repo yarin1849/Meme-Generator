@@ -15,8 +15,32 @@ function onInit() {
     renderMeme()
     addTextInput()
     addColorInput()
+    addFontFamilyInput()
+    addTextAlignInput()
 
     gElCanvas.addEventListener('click', onCanvasClick)
+}
+
+function addFontFamilyInput() {
+    const elFontFamilySelect = document.getElementById('fontFamily')
+    elFontFamilySelect.addEventListener('change', onFontFamilyChange)
+}
+
+function onFontFamilyChange(ev) {
+    const newFontFamily = ev.target.value
+    setFontFamily(newFontFamily)
+    renderMeme()
+}
+
+function addTextAlignInput() {
+    const elTextAlignSelect = document.getElementById('textAlign')
+    elTextAlignSelect.addEventListener('change', onTextAlignChange)
+}
+
+function onTextAlignChange(ev) {
+    const newAlign = ev.target.value
+    setTextAlign(newAlign)
+    renderMeme()
 }
 
 function renderMeme() {
@@ -27,7 +51,7 @@ function renderMeme() {
 
 function drawImg(imgId) {
     const elImg = new Image()
-    elImg.src = `meme-imgs/${imgId}.jpg`
+    elImg.src = `imges/${imgId}.jpg`
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
         renderText()
@@ -40,15 +64,15 @@ function coverCanvasWithImg(elImg) {
 }
 
 function drawText(line, idx) {
-    gCtx.font = `${line.size}px Arial`
+    gCtx.font = `${line.size}px ${line.fontFamily}`
     gCtx.fillStyle = line.color
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = line.align
 
     const x = gElCanvas.width / 2
-    const y = 50 + idx * (line.size + 10)
+    const y = line.y
 
     line.x = x - gCtx.measureText(line.txt).width / 2
-    line.y = y - line.size / 2
+    line.y = y
 
     gCtx.fillText(line.txt, x, y)
 
@@ -61,18 +85,16 @@ function drawText(line, idx) {
     }
 }
 
-
 function drawTextBorder(line) {
     const borderX = line.x
-    const borderY = line.y - 8
+    const borderY = line.y - (line.size - 5 / 2)
     const borderWidth = line.width
-    const borderHeight = line.height
+    const borderHeight = line.size
 
     gCtx.strokeStyle = line.color
     gCtx.lineWidth = 1.5
     gCtx.strokeRect(borderX, borderY, borderWidth, borderHeight)
 }
-
 
 function onCanvasClick(ev) {
     const { offsetX, offsetY } = ev
@@ -80,9 +102,9 @@ function onCanvasClick(ev) {
     const clickedLine = gMeme.lines.find(line => {
         return (
             offsetX > line.x &&
-            offsetX < line.x + line.width + 100 &&
-            offsetY > line.y - 8 &&
-            offsetY < line.y + line.height
+            offsetX < line.x + line.width + 120 &&
+            offsetY > line.y - line.size / 2 &&
+            offsetY < line.y + line.size / 2
         )
     })
 
@@ -94,10 +116,12 @@ function onCanvasClick(ev) {
 }
 
 
-
 function renderText() {
     const meme = getMeme()
+
     meme.lines.forEach((line, idx) => {
+        if (!line.y) { line.y = 50 + idx * (line.size + 10) }
+
         drawText(line, idx)
     })
 }
@@ -156,4 +180,22 @@ function onDownloadCanvas(elLink) {
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
     elLink.download = 'Your-perfect-mime'
+}
+
+function onMoveTextUp() {
+    const selectedLine = getCurrentLine()
+    if (selectedLine)
+        selectedLine.y -= 5
+    renderMeme()
+}
+
+function onMoveTextDown() {
+    const selectedLine = getCurrentLine()
+    if (selectedLine)
+        selectedLine.y += 5
+    renderMeme()
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open')
 }

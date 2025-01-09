@@ -1,0 +1,26 @@
+/* Rampart-One */
+@font-face {
+    font-family: Rampart-One;
+    src: url(/fonts/Rampart-One/RampartOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: fa;
+    src: url(/fonts/Rampart-One/fa/fa-regular-400.ttf);
+}
+
+@font-face {
+    font-family: fa;
+    src: url(/fonts/Rampart-One/fa/fa-solid-900.ttf);
+}
+
+/* Icons */
+
+.fa::before {
+    font-family: fa;
+}
+
+.fa.hamburger::before {
+    content: '\f0c9';
+    color: var(--clr-primary-3);
+}

@@ -6,5 +6,14 @@
 @import url(components/main-header.css);
 @import url(components/logo.css);
 @import url(components/main-nav.css);
+@import url(components/main-content.css);
+@import url(components/edit-tools.css);
+@import url(components/buttons-container.css);
+@import url(components/connection-buttons.css);
+@import url(components/main-footer.css);
+@import url(components/button-toggle-menu.css);
 
 /* Setup */
+@import url(setup/mq.css);
+@import url(setup/typography.css);
+@import url(setup/vars.css);

@@ -9,23 +9,25 @@
 
 </head>
 
-<body class="main-layout" onload="onGalleryInit()">
+<body class="main-layout">
     <header class="main-header">
-        <div class="logo">Meme Generator</div>
+        <div class="flex align-center space-between">
 
-        <h1>Meme Gallery</h1>
-        <nav class="main-nav">
-            <ul class="flex">
-                <li><a href="index.html">Meme Generator</a></li>
-            </ul>
-        </nav>
+            <div class="logo">Meme Generator</div>
+
+            <h1>Meme Gallery</h1>
+            <nav class="main-nav">
+                <ul class="flex">
+                    <li><a href="index.html">Meme Generator</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <h3>Select an image</h3>
-    <section class="imgs-container">
-        <img src="meme-imgs/1.jpg" onclick="onImgSelect(1)" />
-        <img src="meme-imgs/2.jpg" onclick="onImgSelect(2)" />
+    <section class="imges-container">
+
     </section>
+
 
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/memeController.js"></script>
