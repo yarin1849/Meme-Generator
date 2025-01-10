@@ -23,3 +23,4 @@ function clearSavedMemes() {
     saveToStorage(STORAGE_KEY, [])
     renderSavedMemes()
 }
+

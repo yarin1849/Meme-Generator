@@ -3,6 +3,7 @@
 let gElCanvas
 let gCtx
 
+
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -16,10 +17,11 @@ function onInit() {
     addTextInput()
     addColorInput()
     addFontFamilyInput()
-    addTextAlignInput()
+    addTextAlignInput()    
 
     gElCanvas.addEventListener('click', onCanvasClick)
 }
+
 
 function addFontFamilyInput() {
     const elFontFamilySelect = document.getElementById('fontFamily')
@@ -203,6 +205,16 @@ function toggleMenu() {
 function onSaveMemes() {
     saveMemeToStorage()
     renderSavedMemes()
-
 }
 
+function onUploadImg(ev) {
+    ev.preventDefault()
+    const canvasData = gElCanvas.toDataURL('image/jpeg')
+
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+    }
+
+    uploadImg(canvasData, onSuccess)
+}

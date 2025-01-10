@@ -1,5 +1,5 @@
 .buttons-container {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     gap: 10px;
     background-color: var(--clr-primary-3);

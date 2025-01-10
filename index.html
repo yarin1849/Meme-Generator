@@ -34,7 +34,7 @@
         <section class="edit-tools">
             <input type="text" id="memeTextInput" placeholder="Type your meme text here">
 
-            <section class="buttons-container">
+            <section class="flex buttons-container">
                 <section class="main-buttons">
                     <button onclick="onMoveTextUp()">↑</button>
                     <button onclick="onMoveTextDown()">↓</button>
@@ -62,6 +62,12 @@
                 <section class="connection-button">
                 <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
                 <button onclick="onSaveMemes()">Save</button>
+                <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
+                    <input name="img" id="imgData" type="hidden" />
+                    <button class="btn" type="submit">Upload to Facebook</button>
+
+                </form>
+
             </section>
 
             </section>

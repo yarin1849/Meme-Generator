@@ -2,6 +2,30 @@
 
 const STORAGE_KEY = 'memeDB'
 
+// function createMemes(imgId) {
+//     const memes = loadFromStorage(STORAGE_KEY) || [];
+//     const newMeme = createMeme(imgId);
+//     memes.push(newMeme);
+//     saveToStorage(STORAGE_KEY, memes);
+// }
+
+// function createMeme(imgId) {
+//     return {
+//         selectedImgId: imgId,
+//         selectedLineIdx: 0,
+//         lines: [
+//             {
+//                 txt: 'Add text here',
+//                 size: 40,
+//                 color: 'white',
+//                 fontFamily: 'Arial',
+//                 align: 'center',
+//                 y: 50
+//             }
+//         ]
+//     }
+// }
+
 function saveMemeToStorage() {
     const memes = loadFromStorage(STORAGE_KEY) || []
     memes.push(gMeme)
