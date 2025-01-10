@@ -22,3 +22,7 @@ document.addEventListener('DOMContentLoaded', renderGallery)
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
 }
+
+function onRandomSelection(){
+    onImgSelect(getRandomIntInclusive(1, images.length))
+}

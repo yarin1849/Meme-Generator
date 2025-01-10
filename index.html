@@ -16,7 +16,9 @@
 
             <nav class="main-nav">
                 <ul class="flex">
+                    <li><a href="index.html">Meme Generator</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="memes.html">Memes</a></li>
                 </ul>
             </nav>
 
@@ -57,8 +59,12 @@
                     <button onclick="onIncreaseFontSize()">+</button>
                     <button onclick="onDecreaseFontSize()">-</button>
                 </section>
+                <section class="connection-button">
+                <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+                <button onclick="onSaveMemes()">Save</button>
             </section>
-            <a class="connection-button" href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+
+            </section>
         </section>
 
     </main>
@@ -67,7 +73,9 @@
         <small class="rights flex align-center justify-center">© 2025 MemeGenerator.com</small>
     </footer>
 
+    <script src="js/services/utilService.js"></script>
     <script src="js/controllers/galleryController.js"></script>
+    <script src="js/controllers/savedMemesController.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/memeController.js"></script>
 </body>

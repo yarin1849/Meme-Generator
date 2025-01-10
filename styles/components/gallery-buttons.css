@@ -1,0 +1,17 @@
+.gallery-buttons{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    padding: 20px;
+    background-color: var(--clr-primary-3);
+    color: #fff;
+    border: 2px solid #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.gallery-buttons:hover{
+    background-color: var(--clr-primary-1);
+}

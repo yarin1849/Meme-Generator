@@ -1,18 +1,29 @@
 .connection-button {
-    display: inline-block;
+    display: flex;
+    justify-content: space-evenly;
     background-color: var(--clr-primary-3);
     text-align: center;
-    color: #fff;
     padding: 12px 20px;
     margin-top: 15px;
     width: 100%;
-    text-decoration: none;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
 }
 
-.connection-button:hover {
+.connection-button button, 
+.connection-button a {
+    color: #fff;
+    background-color: var(--clr-primary-3);
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.connection-button button:hover, 
+.connection-button a:hover {
     background-color: var(--clr-primary-1);
 }

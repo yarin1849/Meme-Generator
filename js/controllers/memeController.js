@@ -199,3 +199,10 @@ function onMoveTextDown() {
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
 }
+
+function onSaveMemes() {
+    saveMemeToStorage()
+    renderSavedMemes()
+
+}
+

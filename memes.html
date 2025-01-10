@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memes</title>
+    <link rel="stylesheet" href="styles/style.css">
+
+</head>
+
+<body class="main-layout" onload="onInitSaved()">
+    <header class="main-header">
+        <div class="flex align-center space-between">
+
+            <div class="logo">Meme Generator</div>
+
+            <h1>Saved Memes</h1>
+            <nav class="main-nav">
+                <ul class="flex">
+                    <li><a href="index.html">Meme Generator</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="memes.html">Memes</a></li>
+                </ul>
+            </nav>
+
+            <button class="btn-toggle-menu fa hamburger" onclick="toggleMenu()"></button>
+
+        </div>
+    </header>
+    <main>
+        <h2>Saved Memes</h2>
+        <section class="saved-memes-container">
+        </section>
+    </main>
+
+    
+    <script src="js/services/utilService.js"></script>
+    <script src="js/services/memeService.js"></script>
+    <script src="js/controllers/memeController.js"></script>
+    <script src="js/controllers/galleryController.js"></script>
+    <script src="js/controllers/savedMemesController.js"></script>
+</body>
+
+</html>

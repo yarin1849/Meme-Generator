@@ -1,12 +1,29 @@
 'use strict'
 
+const STORAGE_KEY = 'memeDB'
+
+function saveMemeToStorage() {
+    const memes = loadFromStorage(STORAGE_KEY) || []
+    memes.push(gMeme)
+    saveToStorage(STORAGE_KEY, memes)  
+}
+
+function getSavedMemes() {
+    return loadFromStorage(STORAGE_KEY) || []
+}
+
+function clearSavedMemes() {
+    saveToStorage(STORAGE_KEY, [])
+}
+
+
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     lines: [
         {
             txt: 'Add text here',
-            size: 20,
+            size: 40,
             color: 'white',
             fontFamily: 'Arial',
             align: 'center'
@@ -55,7 +72,7 @@ function setDecreaseFontSize() {
 function setAddLine() {
     gMeme.lines.push({
         txt: 'Add text here',
-        size: 20,
+        size: 40,
         color: 'white',
         fontFamily: 'Arial',
         align: 'center'
