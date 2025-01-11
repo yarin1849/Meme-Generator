@@ -53,7 +53,7 @@ function renderMeme() {
 
 function drawImg(imgId) {
     const elImg = new Image()
-    elImg.src = `imges/${imgId}.jpg`
+    elImg.src = `img/${imgId}.jpg`
     elImg.onload = () => {
         coverCanvasWithImg(elImg)
         renderText()

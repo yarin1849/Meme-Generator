@@ -1,0 +1,10 @@
+.saved-meme {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.saved-canvas {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}

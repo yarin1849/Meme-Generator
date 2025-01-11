@@ -1,13 +1,11 @@
 'use strict'
 
-'use strict'
-
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] },
     { id: 2, url: 'img/2.jpg', keywords: ['funny', 'animal'] },
     { id: 3, url: 'img/3.jpg', keywords: ['happy', 'animal'] },
     { id: 4, url: 'img/4.jpg', keywords: ['funny', 'animal'] },
-    { id: 5, url: 'img/5.jpg', keywords: ['funny', 'meme'] },
+    { id: 5, url: 'img/5.jpg', keywords: ['funny', 'human'] },
     { id: 6, url: 'img/6.jpg', keywords: ['sarcastic', 'human'] },
     { id: 7, url: 'img/7.jpg', keywords: ['funny', 'human'] },
     { id: 8, url: 'img/8.jpg', keywords: ['funny', 'human'] },
@@ -23,21 +21,30 @@ var gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: ['funny', 'toys'] }
 ]
 
-const images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+function renderGallery(images) {
+    const elGallery = document.querySelector('.imges-container')
+    if (!elGallery) return
 
-
-function getImagge() {
-    return gImgs
+    elGallery.innerHTML = images.map(img => `
+        <img src="${img.url}" alt="Image ${img.id}" onclick="onImgSelect(${img.id})" />
+    `).join('')
 }
 
+function filterImages(filterValue) {
+    return gImgs.filter(img =>
+        img.keywords.some(keyword => keyword.toLowerCase().includes(filterValue.toLowerCase()))
+    )
+}
 
-function renderGallery() {
-    const elGallery = document.querySelector('.imges-container')
-    if (!elGallery) { return }
+function onFilterChange(event) {
+    const filterValue = event.target.value
+    const filteredImgs = filterImages(filterValue)
+    renderGallery(filteredImgs)
+}
 
-    elGallery.innerHTML = images.map(imgId => `
-        <img src="imges/${imgId}.jpg" onclick="onImgSelect(${imgId})" />
-    `).join('')
+function clearFilter() {
+    document.querySelector('.filter-input').value = ''
+    renderGallery(gImgs)
 }
 
 function onImgSelect(imgId) {
@@ -45,16 +52,14 @@ function onImgSelect(imgId) {
     window.location.href = `index.html?imgId=${imgId}`
 }
 
-document.addEventListener('DOMContentLoaded', renderGallery)
+document.addEventListener('DOMContentLoaded', () => {
+    renderGallery(gImgs)
+})
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
-function onRandomSelection(){
-    onImgSelect(getRandomIntInclusive(1, images.length))
+function onRandomSelection() {
+    onImgSelect(getRandomIntInclusive(1, gImgs.length))
 }
-
-console.log('gElCanvas');
-console.log(gElCanvas);
-
