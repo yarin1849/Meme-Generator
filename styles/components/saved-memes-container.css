@@ -1,10 +1,31 @@
-.saved-meme {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+.saved-memes-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding:20px;
 }
 
-.saved-canvas {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+.saved-memes-container img{
+    width:100%;
+    height: auto;
+}
+
+
+.saved-meme-wrapper {
+    position: relative;
+    margin: 10px;
+}
+
+.delete-meme-btn {
+    position: absolute;
+    top: 5px;
+    color: var(--clr-primary-1);
+    border: none;
+    border-radius: 50%;
+    width: 10px;
+    cursor: pointer;
+}
+
+.delete-meme-btn:hover {
+    background-color: white;
 }

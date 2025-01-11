@@ -49,6 +49,8 @@
     background-color: var(--clr-primary-1);
 }
 
+/* color input */
+
 input[type="color"] {
     -webkit-appearance: none;
     appearance: none;

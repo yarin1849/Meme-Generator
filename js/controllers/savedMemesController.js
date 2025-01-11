@@ -10,7 +10,10 @@ function renderSavedMemes() {
     if (!elSavedMemes) return
 
     elSavedMemes.innerHTML = savedMemes.map((meme, idx) => `
-        <canvas id="saved-canvas-${idx}" class="saved-canvas" onclick="onEditSavedMeme(${idx})"></canvas>
+        <section class="saved-meme-wrapper">
+            <canvas id="saved-canvas-${idx}" class="saved-canvas" onclick="onEditSavedMeme(${idx})"></canvas>
+            <button class="delete-meme-btn" onclick="onDeleteSavedMeme(${idx})">X</button>
+        </section>
     `).join('')
 
     savedMemes.forEach((meme, idx) => {
@@ -20,6 +23,14 @@ function renderSavedMemes() {
     })
 }
 
+function onDeleteSavedMeme(idx) {
+    let savedMemes = getSavedMemes()
+    savedMemes.splice(idx, 1)
+    saveToStorage(STORAGE_KEY, savedMemes)
+    renderSavedMemes()
+}
+
+
 function drawSavedMeme(meme, canvas, ctx) {
     const elImg = new Image()
     elImg.src = `img/${meme.selectedImgId}.jpg`
@@ -28,11 +39,16 @@ function drawSavedMeme(meme, canvas, ctx) {
         canvas.height = elImg.naturalHeight
 
         ctx.drawImage(elImg, 0, 0, canvas.width, canvas.height)
+
         meme.lines.forEach(line => {
             ctx.font = `${line.size}px ${line.fontFamily}`
             ctx.fillStyle = line.color
             ctx.textAlign = line.align
-            ctx.fillText(line.txt, canvas.width / 2, line.y)
+
+            const x = line.x || canvas.width / 2
+            const y = line.y || 50
+
+            ctx.fillText(line.txt, x, y)
         })
     }
 }
@@ -41,13 +57,10 @@ function onEditSavedMeme(idx) {
     const savedMemes = getSavedMemes()
     const memeToEdit = savedMemes[idx]
 
-    saveToStorage('editingMemeIdx', idx)
+    saveToStorage('editingMeme', memeToEdit)
 
-    loadSavedMeme(memeToEdit)
     window.location.href = 'index.html'
 }
-
-
 
 
 function loadSavedMeme(meme) {

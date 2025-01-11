@@ -1,25 +1,37 @@
 'use strict'
 
-var gImgs = [
-    { id: 1, url: 'img/1.jpg', keywords: ['funny', 'politics'] },
-    { id: 2, url: 'img/2.jpg', keywords: ['funny', 'animal'] },
-    { id: 3, url: 'img/3.jpg', keywords: ['happy', 'animal'] },
-    { id: 4, url: 'img/4.jpg', keywords: ['funny', 'animal'] },
-    { id: 5, url: 'img/5.jpg', keywords: ['funny', 'human'] },
-    { id: 6, url: 'img/6.jpg', keywords: ['sarcastic', 'human'] },
-    { id: 7, url: 'img/7.jpg', keywords: ['funny', 'human'] },
-    { id: 8, url: 'img/8.jpg', keywords: ['funny', 'human'] },
-    { id: 9, url: 'img/9.jpg', keywords: ['funny', 'human'] },
-    { id: 10, url: 'img/10.jpg', keywords: ['funny', 'human'] },
-    { id: 11, url: 'img/11.jpg', keywords: ['sarcastic', 'human'] },
-    { id: 12, url: 'img/12.jpg', keywords: ['sarcastic', 'human'] },
-    { id: 13, url: 'img/13.jpg', keywords: ['sarcastic', 'human'] },
-    { id: 14, url: 'img/14.jpg', keywords: ['sad', 'human'] },
-    { id: 15, url: 'img/15.jpg', keywords: ['happy', 'human'] },
-    { id: 16, url: 'img/16.jpg', keywords: ['happy', 'human'] },
-    { id: 17, url: 'img/17.jpg', keywords: ['funny', 'human'] },
-    { id: 18, url: 'img/18.jpg', keywords: ['funny', 'toys'] }
-]
+const keywordsById = {
+    1: ['funny', 'politics'],
+    2: ['funny', 'animal'],
+    3: ['happy', 'animal'],
+    4: ['funny', 'animal'],
+    5: ['funny', 'human'],
+    6: ['sarcastic', 'human'],
+    7: ['funny', 'human'],
+    8: ['crazy', 'human'],
+    9: ['funny', 'human'],
+    10: ['funny', 'human'],
+    11: ['sarcastic', 'human'],
+    12: ['sarcastic', 'human'],
+    13: ['sarcastic', 'human'],
+    14: ['sad', 'human'],
+    15: ['happy', 'human'],
+    16: ['happy', 'human'],
+    17: ['funny', 'human'],
+    18: ['funny', 'toys'],
+    19: ['funny', 'human'],
+    20: ['sarcastic', 'human'],
+    21: ['funny', 'toys'],
+    22: ['happy', 'human'],
+    23: ['happy', 'human'],
+    24: ['sad', 'human']
+}
+
+const gImgs = Object.keys(keywordsById).map(id => ({
+    id: +id,
+    url: `img/${id}.jpg`,
+    keywords: keywordsById[id]
+}))
 
 function renderGallery(images) {
     const elGallery = document.querySelector('.imges-container')
@@ -62,4 +74,17 @@ function toggleMenu() {
 
 function onRandomSelection() {
     onImgSelect(getRandomIntInclusive(1, gImgs.length))
+}
+
+function onImgInput(event) {
+    const reader = new FileReader()
+
+    reader.onload = function () {
+        const imgSrc = reader.result
+        localStorage.setItem('uploadedImg', imgSrc)
+        window.location.href = 'index.html?uploaded=true'
+    }
+
+    const file = event.target.files[0]
+    if (file) reader.readAsDataURL(file)
 }

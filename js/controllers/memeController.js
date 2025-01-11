@@ -9,21 +9,25 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
 
-    const urlParams = new URLSearchParams(window.location.search)
-    const imgId = urlParams.get('imgId')
-
-    if (imgId) setImg(imgId)
+    const editingMeme = loadFromStorage('editingMeme')
+    if (editingMeme) {
+        gMeme = editingMeme
+        saveToStorage('editingMeme', null)
+    } else {
+        const urlParams = new URLSearchParams(window.location.search)
+        const imgId = urlParams.get('imgId')
+        if (imgId) setImg(imgId)
+    }
 
     renderMeme()
     renderStickers()
     addTextInput()
     addColorInput()
     addFontFamilyInput()
-    addTextAlignInput()    
+    addTextAlignInput()
 
     gElCanvas.addEventListener('click', onCanvasClick)
 }
-
 
 function addFontFamilyInput() {
     const elFontFamilySelect = document.getElementById('fontFamily')
@@ -140,11 +144,13 @@ function renderText() {
     const meme = getMeme()
 
     meme.lines.forEach((line, idx) => {
-        if (!line.y) { line.y = 50 + idx * (line.size + 10) }
+        if (!line.y) line.y = 50 + idx * (line.size + 10)
+        if (!line.x) line.x = gElCanvas.width / 2
 
         drawText(line, idx)
     })
 }
+
 
 function addTextInput() {
     const elTxtInput = document.getElementById('memeTextInput')
@@ -224,6 +230,22 @@ function onSaveMemes() {
     saveMemeToStorage()
     renderSavedMemes()
 }
+
+function onSaveMemes() {
+    saveMemeToStorage()
+    renderSavedMemes()
+    showSaveModal()
+}
+
+function showSaveModal() {
+    const modal = document.getElementById('save-modal')
+    modal.classList.add('show')
+
+    setTimeout(() => {
+        modal.classList.remove('show')
+    }, 2000)
+}
+
 
 function onUploadImg(ev) {
     ev.preventDefault()

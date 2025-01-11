@@ -17,7 +17,6 @@ function clearSavedMemes() {
     saveToStorage(STORAGE_KEY, [])
 }
 
-
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -32,7 +31,6 @@ var gMeme = {
     ]
 }
 
-
 function getMeme() {
     return gMeme
 }
@@ -43,7 +41,6 @@ function getCurrentLine() {
 
     return gMeme.lines[gMeme.selectedLineIdx]
 }
-
 
 function setLineTxt(newText) {
     const line = getCurrentLine()
@@ -110,10 +107,6 @@ function setTextAlign(newAlign) {
     line.align = newAlign
 }
 
-
-
-
-
 function isLineClicked(clickedPos) {
     return gMeme.lines.findIndex(line => {
         const xStart = line.x - line.width / 2
@@ -126,7 +119,6 @@ function isLineClicked(clickedPos) {
         return isXInside && isYInside
     })
 }
-
 
 function setLineDrag(lineIdx, isDrag) {
     gMeme.lines[lineIdx].isDrag = isDrag
