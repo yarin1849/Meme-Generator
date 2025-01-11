@@ -1,17 +1,17 @@
 /* Rampart-One */
 @font-face {
     font-family: Rampart-One;
-    src: url(/fonts/Rampart-One/RampartOne-Regular.ttf);
+    src: url(/fonts/RampartOne-Regular.ttf);
 }
 
 @font-face {
     font-family: fa;
-    src: url(/fonts/Rampart-One/fa/fa-regular-400.ttf);
+    src: url(/fonts/fa/fa-regular-400.ttf);
 }
 
 @font-face {
     font-family: fa;
-    src: url(/fonts/Rampart-One/fa/fa-solid-900.ttf);
+    src: url(/fonts/fa/fa-solid-900.ttf);
 }
 
 /* Icons */
@@ -23,4 +23,37 @@
 .fa.hamburger::before {
     content: '\f0c9';
     color: var(--clr-primary-3);
+}
+
+.fa.arrow-up::before {
+    content: '\f062';
+}
+
+
+.fa.arrow-down::before {
+    content: '\f063';
+}
+
+.fa.switch::before {
+    content: '\f363';
+}
+
+.fa.add::before{
+    content: '\2b';
+}
+
+.fa.delete::before{
+    content: '\f1f8';
+}
+
+.fa.download::before{
+    content: '\f019'
+}
+
+.fa.save::before{
+    content: '\f0c7'
+}
+
+.fa.share::before{
+    content: '\f064'
 }

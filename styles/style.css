@@ -12,13 +12,13 @@
 @import url(components/connection-buttons.css);
 @import url(components/main-footer.css);
 @import url(components/button-toggle-menu.css);
+@import url(components/imges.container.css);
 @import url(components/gallery-buttons.css);
 @import url(components/saved-memes-container.css);
 @import url(components/stickers-container.css);
+
 
 /* Setup */
 @import url(setup/mq.css);
 @import url(setup/typography.css);
 @import url(setup/vars.css);
-
-

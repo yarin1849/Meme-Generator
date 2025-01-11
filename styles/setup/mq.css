@@ -40,4 +40,8 @@
     .main-nav a {
         padding: 1em;
     }
+
+    .imges-container {
+        grid-template-columns: repeat(2,1fr);
+    }
 }

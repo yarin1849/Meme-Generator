@@ -14,13 +14,6 @@ html {
     gap: 70px;
 }
 
-.canvas-container {
-    width: 60vw;
-    margin: 10px auto;
-    border: 1px solid black;
-    background-color: rgb(207, 207, 207);
-}
-
 .main-header .btn-toggle-menu {
     display: none;
 }
@@ -31,11 +24,26 @@ canvas {
     max-height: 90%;
     height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0;
 }
 
-.buttons{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: var(--clr-primary-3);
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: 0.3s ease;
+    max-width: 120px;
+    text-align: center;
+}
+
+button:hover, a:hover {
+    background-color: var(--clr-primary-1);
 }

@@ -1,14 +1,18 @@
 .edit-tools {
-    display: flex;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.buttons-container,
+.edit-tools {
     flex-direction: column;
+    gap: 10px;
     background-color: var(--clr-primary-3);
     padding: 20px;
     border-radius: 10px;
     width: 100%;
     max-width: 500px;
-    margin: auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    
+    margin: 0;
 }
 
 #memeTextInput {
@@ -20,29 +24,6 @@
     border-radius: 5px;
     background-color: var(--clr-primary-3);
     color: #ffff;
-}
-
-.main-buttons {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.main-buttons button {
-    background-color: var(--clr-primary-3);
-    color: #fff;
-    border: 2px solid #fff;
-    padding: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s ease;
-    flex-wrap: wrap;
-
-}
-
-.main-buttons button:hover {
-    background-color: var(--clr-primary-1);
 }
 
 .font-buttons {

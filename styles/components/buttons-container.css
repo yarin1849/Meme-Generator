@@ -1,22 +1,23 @@
-.buttons-container {
-    /* display: flex; */
-    flex-direction: column;
+/* main buttons */
+
+.main-buttons {
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 10px;
-    background-color: var(--clr-primary-3);
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    
 }
 
+.main-buttons button {
+    width: 100%;
+    max-width: 75px;
+}
 
+/* font buttons */
 
 .font-buttons {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 2fr 2fr; 
     gap: 10px;
+    width: 100%;
 }
 
 .font-buttons select {
@@ -25,8 +26,9 @@
     border-radius: 5px;
     background-color: var(--clr-primary-3);
     color: #fff;
-    font-size: 16px;
+    font-size: 1rem;
     transition: 0.3s ease;
+    width: 100%;
 }
 
 .font-buttons select:hover {
@@ -54,10 +56,6 @@ input[type="color"] {
     height: 50px;
     cursor: pointer;
     border-radius: 10px;
-    text-align: center;
-    display: inline-block;
-    font-family: Arial, sans-serif;
-    font-size: 1rem;
     background: none;
     position: relative; 
 }
@@ -78,7 +76,7 @@ input[type="color"]::before {
     left: 0;
     width: 100%;
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    place-items: center;
+    place-content: center;
     font-size: 25px;
 }

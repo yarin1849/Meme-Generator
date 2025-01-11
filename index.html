@@ -37,43 +37,40 @@
             <input type="text" id="memeTextInput" placeholder="Type your meme text here">
 
             <section class="flex buttons-container">
-                <section class="main-buttons">
-                    <button onclick="onMoveTextUp()">↑</button>
-                    <button onclick="onMoveTextDown()">↓</button>
-                    <button onclick="onSwitchLine()">Switch</button>
-                    <button onclick="onAddLine()">Add</button>
-                    <button onclick="onDeleteLine()">Delete</button>
+                <section class=" flex main-buttons">
+                    <button class="fa arrow-up" onclick="onMoveTextUp()"></button>
+                    <button class="fa arrow-down" onclick="onMoveTextDown()"></button>
+                    <button class="fa switch" onclick="onSwitchLine()"></button>
+                    <button class="fa add" onclick="onAddLine()"></button>
+                    <button class="fa delete" onclick="onDeleteLine()"></button>
                 </section>
                 <section class="font-buttons">
+                    
+                    <button onclick="onIncreaseFontSize()">+</button>
+                    <button onclick="onDecreaseFontSize()">-</button>
                     <input type="color" id="textColor" name="textColor" value="#ffffff" />
+                    <select id="textAlign">
+                        <option value="left">Left</option>
+                        <option value="center" selected>Center</option>
+                        <option value="right">Right</option>
+                    </select>
                     <select id="fontFamily">
                         <option value="Arial">Arial</option>
                         <option value="Verdana">Verdana</option>
                         <option value="Times New Roman">Times New Roman</option>
                         <option value="Tahoma">Tahoma</option>
                     </select>
-                    <select id="textAlign">
-                        <option value="left">Left</option>
-                        <option value="center" selected>Center</option>
-                        <option value="right">Right</option>
-                    </select>
-
-                    <button onclick="onIncreaseFontSize()">+</button>
-                    <button onclick="onDecreaseFontSize()">-</button>
-                </section>
+               </section>
                 <section class="stickers-container">
                 </section>
-                <section class="connection-button">
-                <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
-                <button onclick="onSaveMemes()">Save</button>
-                <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
-                    <input name="img" id="imgData" type="hidden" />
-                    <button class="btn" type="submit">Upload to Facebook</button>
-
-                </form>
-
-            </section>
-
+                <section class="connection-buttons">
+                    <a class ="fa download" href="#" onclick="onDownloadCanvas(this)" download="file-name"></a>
+                    <button class ="fa save" onclick="onSaveMemes()"></button>
+                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="fa share" type="submit"></button>
+                    </form>
+                </section>
             </section>
         </section>
 
