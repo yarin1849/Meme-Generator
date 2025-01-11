@@ -109,3 +109,40 @@ function setTextAlign(newAlign) {
     const line = getCurrentLine()
     line.align = newAlign
 }
+
+
+
+
+
+function isLineClicked(clickedPos) {
+    return gMeme.lines.findIndex(line => {
+        const xStart = line.x - line.width / 2
+        const xEnd = line.x + line.width / 2
+        const yStart = line.y - line.size
+        const yEnd = line.y
+
+        const isXInside = clickedPos.x > xStart && clickedPos.x < xEnd
+        const isYInside = clickedPos.y > yStart && clickedPos.y < yEnd
+        return isXInside && isYInside
+    })
+}
+
+
+function setLineDrag(lineIdx, isDrag) {
+    gMeme.lines[lineIdx].isDrag = isDrag
+}
+
+function isDragging() {
+    return gMeme.lines.some(line => line.isDrag)
+}
+
+function stopDragging() {
+    gMeme.lines.forEach(line => (line.isDrag = false))
+}
+
+function moveLine(dx, dy) {
+    const line = gMeme.lines.find(line => line.isDrag)
+    line.x += dx
+    line.y += dy
+}
+

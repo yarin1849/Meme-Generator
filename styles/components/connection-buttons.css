@@ -6,6 +6,8 @@
     padding: 12px 20px;
     margin-top: 15px;
     width: 100%;
+    flex-wrap: wrap;
+
 }
 
 .connection-button button, 
@@ -21,6 +23,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .connection-button button:hover, 

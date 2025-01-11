@@ -2,6 +2,7 @@
 
 let gElCanvas
 let gCtx
+let gStartPos
 
 
 function onInit() {
@@ -71,11 +72,18 @@ function drawText(line, idx) {
     gCtx.fillStyle = line.color
     gCtx.textAlign = line.align
 
-    const x = gElCanvas.width / 2
-    const y = line.y
+    if (line.x === undefined) {
+        if (line.align === 'center') {
+            line.x = gElCanvas.width / 2
+        } else if (line.align === 'left') {
+            line.x = 0
+        } else if (line.align === 'right') {
+            line.x = gElCanvas.width
+        }
+    }
 
-    line.x = x - gCtx.measureText(line.txt).width / 2
-    line.y = y
+    const x = line.x
+    const y = line.y
 
     gCtx.fillText(line.txt, x, y)
 
@@ -84,14 +92,24 @@ function drawText(line, idx) {
     line.height = line.size
 
     if (idx === gMeme.selectedLineIdx) {
-        drawTextBorder(line)
+        drawTextBorder(line, x, y, textWidth)
     }
 }
 
-function drawTextBorder(line) {
-    const borderX = line.x
-    const borderY = line.y - (line.size - 5 / 2)
-    const borderWidth = line.width
+function drawTextBorder(line, x, y, textWidth) {
+
+    let borderX
+
+    if(line.align === 'center'){
+        borderX = x - textWidth / 2
+    } else if(line.align === 'left'){
+        borderX = x
+    } else if(line.align === 'right'){
+        borderX = textWidth
+    }
+
+    const borderY = y - line.size
+    const borderWidth = textWidth
     const borderHeight = line.size
 
     gCtx.strokeStyle = line.color
@@ -117,7 +135,6 @@ function onCanvasClick(ev) {
         renderMeme()
     }
 }
-
 
 function renderText() {
     const meme = getMeme()
@@ -241,4 +258,69 @@ function onAddSticker(sticker) {
         y: gElCanvas.height / 2
     })
     renderMeme()
+}
+
+function onDown(ev) {
+
+    const pos = getEvPos(ev)
+
+    const clickedLineIdx = isLineClicked(pos)
+    if (clickedLineIdx === -1) return
+
+    setLineDrag(clickedLineIdx, true)
+
+    gMeme.selectedLineIdx = clickedLineIdx
+
+    gStartPos = pos
+    document.body.style.cursor = 'grabbing'
+
+    renderMeme()
+}
+
+function onMove(ev) {
+    const pos = getEvPos(ev)
+
+    if (isDragging()) {
+        const dx = pos.x - gStartPos.x
+        const dy = pos.y - gStartPos.y
+
+        moveLine(dx, dy)
+
+        gStartPos = pos
+
+        renderMeme()
+        return
+    }
+
+    if (isLineClicked(pos) !== -1) {
+        document.body.style.cursor = 'grab'
+    } else {
+        document.body.style.cursor = 'default'
+    }
+}
+
+function onUp() {
+    stopDragging()
+    document.body.style.cursor = 'default'
+
+    renderMeme()
+}
+
+function getEvPos(ev) {
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
+    if (TOUCH_EVS.includes(ev.type)) {
+        ev.preventDefault()
+        const touch = ev.changedTouches[0]
+        const rect = gElCanvas.getBoundingClientRect()
+        pos = {
+            x: touch.clientX - rect.left,
+            y: touch.clientY - rect.top,
+        }
+    }
+    return pos
 }

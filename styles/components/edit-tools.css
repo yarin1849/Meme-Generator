@@ -8,6 +8,7 @@
     max-width: 500px;
     margin: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    
 }
 
 #memeTextInput {
@@ -24,6 +25,7 @@
 .main-buttons {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .main-buttons button {
@@ -35,6 +37,8 @@
     cursor: pointer;
     border-radius: 5px;
     transition: 0.3s ease;
+    flex-wrap: wrap;
+
 }
 
 .main-buttons button:hover {
