@@ -14,6 +14,7 @@ function onInit() {
     if (imgId) setImg(imgId)
 
     renderMeme()
+    renderStickers()
     addTextInput()
     addColorInput()
     addFontFamilyInput()
@@ -217,4 +218,27 @@ function onUploadImg(ev) {
     }
 
     uploadImg(canvasData, onSuccess)
+}
+
+function renderStickers(){
+    const stickers = ['😂', '😜', '😍', '❤️', '😎', '🔥']
+    const container = document.querySelector('.stickers-container')
+
+    const stickersHtml = stickers.map(sticker => {
+        return `<button class="sticker" onclick="onAddSticker('${sticker}')">${sticker}</button>`
+    }).join('')
+
+    container.innerHTML = stickersHtml
+}
+
+function onAddSticker(sticker) {
+    gMeme.lines.push({
+        txt: sticker,
+        size: 60,
+        color: 'black',
+        fontFamily: 'Arial',
+        align: 'center',
+        y: gElCanvas.height / 2
+    })
+    renderMeme()
 }
