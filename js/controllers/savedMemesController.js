@@ -63,7 +63,7 @@ function onEditSavedMeme(idx) {
 
     saveToStorage('editingMeme', memeToEdit)
 
-    window.location.href = 'index.html'
+    window.location.href = 'editor.html'
 }
 
 function loadSavedMeme(meme) {
