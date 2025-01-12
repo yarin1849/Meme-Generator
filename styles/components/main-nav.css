@@ -12,6 +12,9 @@
 }
 
 .main-nav ul li a {
+    font-family: Rampart-One;
+    font-size: 1.2rem;
+    font-weight: bold;
     text-decoration: none;
     color: var(--clr-primary-3);
     padding: 8px 12px;

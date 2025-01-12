@@ -14,6 +14,10 @@ html {
     gap: 70px;
 }
 
+h1 {
+    font-family: Rampart-One;
+}
+
 .main-header .btn-toggle-menu {
     display: none;
 }

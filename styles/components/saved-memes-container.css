@@ -32,3 +32,13 @@
     background-color: white;
     transition: 0.3s ease;
 }
+
+.no-saved-memes {
+    position: absolute;
+    display: flex;
+    color: var(--clr-primary-1);
+    font-family: Rampart-One;
+    font-size: 3rem;
+    text-align: center;
+    justify-self: center;
+}
