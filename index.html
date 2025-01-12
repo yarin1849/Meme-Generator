@@ -4,91 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Generator</title>
+    <title>Meme Generator - Gallery</title>
     <link rel="stylesheet" href="styles/style.css">
+
 </head>
 
-<body class="main-layout" onload="onInit()">
+<body class="main-layout">
     <header class="main-header">
         <div class="flex align-center space-between">
-            <div class="logo">Meme Generator</div>
-            <h1>Meme Generator</h1>
 
+            <div class="logo">Meme Generator</div>
+
+            <h1>Meme Gallery</h1>
             <nav class="main-nav">
                 <ul class="flex">
-                    <li><a href="index.html">Meme Generator</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="editor.html">Meme Editor</a></li>
+                    <li><a href="index.html">Gallery</a></li>
                     <li><a href="memes.html">Memes</a></li>
                 </ul>
             </nav>
 
             <button class="btn-toggle-menu fa hamburger" onclick="toggleMenu()"></button>
 
-
         </div>
     </header>
-    <main class="main-content">
-
-        <canvas width="500" height="500" onmousedown="onDown(event)" onmousemove="onMove(event)" onmouseup="onUp()" 
-        ontouchstart="onDown(event)" ontouchmove="onMove(event)" ontouchend="onUp()">
-        </canvas>
-
-        <section class="edit-tools">
-            <input type="text" id="memeTextInput" placeholder="Type your meme text here">
-
-            <section class="flex buttons-container">
-                <section class=" flex main-buttons">
-                    <button class="fa arrow-up" onclick="onMoveTextUp()"></button>
-                    <button class="fa arrow-down" onclick="onMoveTextDown()"></button>
-                    <button class="fa switch" onclick="onSwitchLine()"></button>
-                    <button class="fa add" onclick="onAddLine()"></button>
-                    <button class="fa delete" onclick="onDeleteLine()"></button>
-                </section>
-                <section class="font-buttons">
-                    
-                    <button onclick="onIncreaseFontSize()">+</button>
-                    <button onclick="onDecreaseFontSize()">-</button>
-                    <input type="color" id="textColor" name="textColor" value="#ffffff" />
-                    <select id="textAlign">
-                        <option value="left">Left</option>
-                        <option value="center" selected>Center</option>
-                        <option value="right">Right</option>
-                    </select>
-                    <select id="fontFamily">
-                        <option value="Arial">Arial</option>
-                        <option value="Verdana">Verdana</option>
-                        <option value="Times New Roman">Times New Roman</option>
-                        <option value="Tahoma">Tahoma</option>
-                    </select>
-               </section>
-                <section class="stickers-container">
-                </section>
-                <section class="connection-buttons">
-                    <a class ="fa download" href="#" onclick="onDownloadCanvas(this)" download="file-name"></a>
-                    <button class ="fa save" onclick="onSaveMemes()"></button>
-                    <form action="" method="POST" enctype="multipart/form-data" onsubmit="onUploadImg(event)">
-                        <input name="img" id="imgData" type="hidden" />
-                        <button class="fa share" type="submit"></button>
-                    </form>
-                </section>
-            </section>
+    <main class="gallery-container">
+        <section class="flex gallery-buttons-container">
+            <input list="Memes" class="filter-input" placeholder="Search" oninput="onFilterChange(event)">
+            <datalist id="Memes">
+                <option value="Happy">
+                <option value="Sad">
+                <option value="Crazy">
+                <option value="Sarcastic">
+                <option value="Funny">
+            </datalist>
+            <button class="gallery-buttons" onclick="clearFilter()">Clear Filter</button>
+            <button class="gallery-buttons" onclick="onRandomSelection()">I'm flexible</button>
+            <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
         </section>
 
-        <section id="save-modal" class="modal">
-            <p>Meme saved!</p>
+        <section class="imges-container">
         </section>
-        
-
     </main>
-    <footer class="main-footer">
-        <div class="logo small-logo flex align-center justify-center">Meme Generator</div>
-        <small class="rights flex align-center justify-center">© 2025 MemeGenerator.com</small>
-    </footer>
 
     <script src="js/services/utilService.js"></script>
-    <script src="js/controllers/galleryController.js"></script>
-    <script src="js/controllers/savedMemesController.js"></script>
     <script src="js/services/memeService.js"></script>
     <script src="js/controllers/memeController.js"></script>
+    <script src="js/controllers/galleryController.js"></script>
 </body>
+
 </html>
