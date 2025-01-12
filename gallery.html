@@ -28,9 +28,9 @@
 
         </div>
     </header>
-    <main>
-        <section class="gallery-buttons-container">
-        <input list="Memes" class="filter-input" oninput="onFilterChange(event)">
+    <main class="gallery-container">
+        <section class="flex gallery-buttons-container">
+            <input list="Memes" class="filter-input" oninput="onFilterChange(event)">
             <datalist id="Memes">
                 <option value="Happy">
                 <option value="Sad">
@@ -39,8 +39,8 @@
                 <option value="Funny">
             </datalist>
             <button class="gallery-buttons" onclick="clearFilter()">Clear Filter</button>
-        <button class="gallery-buttons" onclick="onRandomSelection()">I'm flexible</button>
-        <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
+            <button class="gallery-buttons" onclick="onRandomSelection()">I'm flexible</button>
+            <!-- <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)" /> -->
         </section>
 
         <section class="imges-container">

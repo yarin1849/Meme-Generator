@@ -4,7 +4,6 @@ let gElCanvas
 let gCtx
 let gStartPos
 
-
 function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
@@ -33,6 +32,7 @@ function addFontFamilyInput() {
     const elFontFamilySelect = document.getElementById('fontFamily')
     elFontFamilySelect.addEventListener('change', onFontFamilyChange)
 }
+
 
 function onFontFamilyChange(ev) {
     const newFontFamily = ev.target.value
@@ -104,11 +104,11 @@ function drawTextBorder(line, x, y, textWidth) {
 
     let borderX
 
-    if(line.align === 'center'){
+    if (line.align === 'center') {
         borderX = x - textWidth / 2
-    } else if(line.align === 'left'){
+    } else if (line.align === 'left') {
         borderX = x
-    } else if(line.align === 'right'){
+    } else if (line.align === 'right') {
         borderX = textWidth
     }
 
@@ -246,7 +246,6 @@ function showSaveModal() {
     }, 2000)
 }
 
-
 function onUploadImg(ev) {
     ev.preventDefault()
     const canvasData = gElCanvas.toDataURL('image/jpeg')
@@ -259,7 +258,7 @@ function onUploadImg(ev) {
     uploadImg(canvasData, onSuccess)
 }
 
-function renderStickers(){
+function renderStickers() {
     const stickers = ['😂', '😜', '😍', '❤️', '😎', '🔥']
     const container = document.querySelector('.stickers-container')
 

@@ -1,26 +1,18 @@
+.gallery-container {
+    padding: 20px;
+}
+
 .gallery-buttons-container {
-    display: flex;
-    align-items: center;
     gap: 15px;
-    margin: 20px auto;
     width: 100%;
     flex-wrap: wrap;
 }
 
 .gallery-buttons {
-    color: #fff;
     background-color: var(--clr-primary-3);
-    border: 2px solid #fff;
-    border-radius: 5px;
-    padding: 10px 20px;
     cursor: pointer;
-    text-decoration: none;
     transition: 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     height: 50px;
-    box-sizing: border-box;
 }
 
 .gallery-buttons:hover {
@@ -33,8 +25,7 @@
     border: 2px solid #fff;
     border-radius: 5px;
     padding: 10px 20px;
+    /* margin-left: 20px; */
     cursor: pointer;
-    text-decoration: none;
-    justify-content: center;
     height: 50px;
 }

@@ -30,7 +30,6 @@ function onDeleteSavedMeme(idx) {
     renderSavedMemes()
 }
 
-
 function drawSavedMeme(meme, canvas, ctx) {
     const elImg = new Image()
     elImg.src = `img/${meme.selectedImgId}.jpg`
@@ -61,7 +60,6 @@ function onEditSavedMeme(idx) {
 
     window.location.href = 'index.html'
 }
-
 
 function loadSavedMeme(meme) {
     gMeme = meme

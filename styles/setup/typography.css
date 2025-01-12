@@ -1,7 +1,7 @@
 /* Rampart-One */
 @font-face {
     font-family: Rampart-One;
-    src: url(/fonts/Rampart-One/RampartOne-Regular.ttf);
+    src: url(/Meme-Generator/fonts/Rampart-One/RampartOne-Regular.ttf);
 }
 
 @font-face {
@@ -38,22 +38,22 @@
     content: '\f363';
 }
 
-.fa.add::before{
+.fa.add::before {
     content: '\2b';
 }
 
-.fa.delete::before{
+.fa.delete::before {
     content: '\f1f8';
 }
 
-.fa.download::before{
+.fa.download::before {
     content: '\f019'
 }
 
-.fa.save::before{
+.fa.save::before {
     content: '\f0c7'
 }
 
-.fa.share::before{
+.fa.share::before {
     content: '\f064'
 }
