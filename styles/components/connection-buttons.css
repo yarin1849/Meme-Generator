@@ -1,12 +1,12 @@
-.connection-buttons{
+.connection-buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: 15px;
     flex-wrap: wrap;
-    width:100%;
+    width: 100%;
 }
 
-.connection-buttons button, 
+.connection-buttons button,
 .connection-buttons a {
     color: #fff;
     background-color: var(--clr-primary-3);
@@ -22,7 +22,7 @@
     justify-content: center;
 }
 
-.connection-buttons button:hover, 
+.connection-buttons button:hover,
 .connection-buttons a:hover {
     background-color: var(--clr-primary-1);
 }
