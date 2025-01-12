@@ -9,3 +9,8 @@
     width: 100%;
     height: auto;
 }
+
+.imges-container img:hover {
+    cursor: pointer;
+    border: 1px solid var(--clr-primary-1);
+}
