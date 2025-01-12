@@ -115,7 +115,7 @@ function drawTextBorder(line, x, y, textWidth) {
     } else if (line.align === 'left') {
         borderX = x
     } else if (line.align === 'right') {
-        borderX = textWidth
+        borderX = x - textWidth
     }
 
     const borderY = y - line.size
