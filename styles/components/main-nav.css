@@ -17,6 +17,6 @@
     padding: 8px 12px;
 }
 
-.main-nav ul li a:hover{
+.main-nav ul li a:hover {
     color: var(--clr-primary-2);
 }
