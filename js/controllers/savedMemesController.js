@@ -9,6 +9,11 @@ function renderSavedMemes() {
     const elSavedMemes = document.querySelector('.saved-memes-container')
     if (!elSavedMemes) return
 
+    if (!savedMemes.length) {
+        elSavedMemes.innerHTML = '<p class="no-saved-memes">No Saved memes yet, Go to Create one!</p>'
+        return
+    }
+
     elSavedMemes.innerHTML = savedMemes.map((meme, idx) => `
         <section class="saved-meme-wrapper">
             <canvas id="saved-canvas-${idx}" class="saved-canvas" onclick="onEditSavedMeme(${idx})"></canvas>

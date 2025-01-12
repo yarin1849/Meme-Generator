@@ -61,7 +61,7 @@ function clearFilter() {
 
 function onImgSelect(imgId) {
     setImg(imgId)
-    window.location.href = `index.html?imgId=${imgId}`
+    window.location.href = `editor.html?imgId=${imgId}`
 }
 
 document.addEventListener('DOMContentLoaded', () => {
