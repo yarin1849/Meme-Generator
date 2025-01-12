@@ -50,4 +50,8 @@
     .imges-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .saved-memes-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

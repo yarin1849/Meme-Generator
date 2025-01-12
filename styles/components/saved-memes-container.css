@@ -1,6 +1,12 @@
 .saved-memes-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+}
+
+.saved-meme-wrapper:hover {
+    cursor: pointer;
+    border: 1px solid var(--clr-primary-1);
 }
 
 .saved-meme-wrapper {
@@ -9,15 +15,20 @@
 }
 
 .delete-meme-btn {
+    display: none;
     position: absolute;
-    top: 5px;
+    top: 0px;
     color: var(--clr-primary-1);
-    border: none;
-    border-radius: 50%;
-    width: 10px;
+    border: 1px solid var(--clr-primary-1);
     cursor: pointer;
+    padding: 7px 14px;
+}
+
+.saved-meme-wrapper:hover .delete-meme-btn {
+    display: block;
 }
 
 .delete-meme-btn:hover {
     background-color: white;
+    transition: 0.3s ease;
 }
