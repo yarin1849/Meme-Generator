@@ -72,6 +72,13 @@ function coverCanvasWithImg(elImg) {
 }
 
 function drawText(line, idx) {
+
+    if (!line.txt.trim()) {
+        line.width = 0
+        line.height = 0
+        return
+    }
+
     gCtx.font = `${line.size}px ${line.fontFamily}`
     gCtx.fillStyle = line.color
     gCtx.textAlign = line.align
@@ -101,7 +108,6 @@ function drawText(line, idx) {
 }
 
 function drawTextBorder(line, x, y, textWidth) {
-
     let borderX
 
     if (line.align === 'center') {
@@ -162,6 +168,12 @@ function addTextInput() {
 function onTextInput(ev) {
     const newText = ev.target.value
     setLineTxt(newText)
+    const selectedLine = getCurrentLine()
+
+    if (!newText.trim()) {
+        selectedLine.width = 0
+        selectedLine.height = 0
+    }
     renderMeme()
 }
 
